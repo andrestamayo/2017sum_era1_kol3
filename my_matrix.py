@@ -1,21 +1,108 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-__author__ = "Veli Cihan Gökkaya"
-__copyright__ = "Copyright 2007, AGH University of Science and Technology"
 
 class Matrix:
 
 	def __init__(self,*args):
-		self.m = (args)
+		self.m = []
+		self.m.extend(args)
 
 	def __repr__(self):
-		return str(self.m)
+		if not isinstance(self.m,list):
+			return str(self.m)
+		else:
+			out = "\n"
+			for i,it in enumerate(self.m):
+				out += "|"
+				for j,jt in enumerate(self.m[i]):
+					out += " " + str(self.m[i][j]) + " "
+				out += "|\n"
+			return out
 
-	def __getitem__(self,(i)):
-		return self.m[i]
+	def __add__(self,matrix):
+		self.sum = Matrix()
+		self.group = []
+		if isinstance(matrix, int):
+			if not isinstance(self.m,list):
+				for i,it in enumerate(self.m):
+					self.sum.m.append(it + matrix)
+				return self.sum
+			else:
+				for i,it in enumerate(self.m):
+					for j,jt in enumerate(self.m[i]):
+						self.group.append(jt + matrix)
+					self.sum.m.append(self.group)
+					self.group = []
+				return self.sum
+		elif len(self.m) == len(matrix.m):
+			if not isinstance(self.m,list):
+				for i,it in enumerate(self.m):
+					self.sum.m.append(it + matrix.m[i])
+				return self.sum
+			else:
+				for i,it in enumerate(self.m):
+					for j,jt in enumerate(self.m[i]):
+						self.group.append(jt + matrix.m[i][j])
+					self.sum.m.append(self.group)
+					self.group = []
+				return self.sum
 
-	def add(self,matrix):
-		sum = ()
-		for i,item in enumerate(self):
-			sum = sum + ((item + matrix[i]),)
-		return sum
+	def __radd__(self,matrix):
+		self.sum = Matrix()
+		self.group = []
+		if isinstance(matrix, int):
+			if not isinstance(self.m,list):
+				for i,it in enumerate(self.m):
+					self.sum.m.append(it + matrix)
+				return self.sum
+			else:
+				for i,it in enumerate(self.m):
+					for j,jt in enumerate(self.m[i]):
+						self.group.append(jt + matrix)
+					self.sum.m.append(self.group)
+					self.group = []
+				return self.sum
+
+	def __sub__(self,matrix):
+		self.sum = Matrix()
+		self.group = []
+		if isinstance(matrix, int):
+			if not isinstance(self.m,list):
+				for i,it in enumerate(self.m):
+					self.sum.m.append(it - matrix)
+				return self.sum
+			else:
+				for i,it in enumerate(self.m):
+					for j,jt in enumerate(self.m[i]):
+						self.group.append(jt - matrix)
+					self.sum.m.append(self.group)
+					self.group = []
+				return self.sum
+		elif len(self.m) == len(matrix.m):
+			if not isinstance(self.m,list):
+				for i,it in enumerate(self.m):
+					self.sum.m.append(it - matrix.m[i])
+				return self.sum
+			else:
+				for i,it in enumerate(self.m):
+					for j,jt in enumerate(self.m[i]):
+						self.group.append(jt - matrix.m[i][j])
+					self.sum.m.append(self.group)
+					self.group = []
+				return self.sum
+
+	def __rsub__(self,matrix):
+		self.sum = Matrix()
+		self.group = []
+		if isinstance(matrix, int):
+			if not isinstance(self.m,list):
+				for i,it in enumerate(self.m):
+					self.sum.m.append(matrix - it)
+				return self.sum
+			else:
+				for i,it in enumerate(self.m):
+					for j,jt in enumerate(self.m[i]):
+						self.group.append(matrix - jt)
+					self.sum.m.append(self.group)
+					self.group = []
+				return self.sum
