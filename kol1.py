@@ -4,7 +4,7 @@
 from my_matrix import Matrix
 
 m1 = Matrix([[1,2],[3,4]])
-print m1.m
+print m1
 #| 1  2 |
 #| 3  4 |
 
@@ -47,3 +47,8 @@ m9 = m1.prod(m2)
 print m9
 #| 8  5 |
 #| 20  13 |
+
+for i in m9:
+	print i
+#[8, 5]
+#[20, 13]

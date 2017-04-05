@@ -7,6 +7,7 @@ class Matrix:
 		self.m = []
 		for argi in args:
 			self.m.extend(argi)
+		self.index = 0
 
 	def __repr__(self):
 		if not isinstance(self.m,list):
@@ -122,3 +123,13 @@ class Matrix:
 				for k in range(col_self):
 					self.sum.m[i][j] += self.m[i][k] * matrix.m[k][j]
 		return self.sum
+
+	def __iter__(self):
+		return self
+
+	def next(self):
+		if self.index >= len(self.m):
+			raise StopIteration
+		else:
+			self.index += 1
+			return self.m[self.index - 1]
