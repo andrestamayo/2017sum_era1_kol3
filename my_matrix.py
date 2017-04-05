@@ -5,7 +5,8 @@ class Matrix:
 
 	def __init__(self,*args):
 		self.m = []
-		self.m.extend(args)
+		for argi in args:
+			self.m.extend(argi)
 
 	def __repr__(self):
 		if not isinstance(self.m,list):
@@ -106,3 +107,18 @@ class Matrix:
 					self.sum.m.append(self.group)
 					self.group = []
 				return self.sum
+
+	def prod(self,matrix):
+		row_self = len(self.m)
+		col_self = len(self.m[0])
+		row_matrix = len(matrix.m)
+		col_matrix = len(matrix.m[0])
+		if col_self != row_matrix:
+			print "Error"
+			return
+		self.sum = Matrix([[0 for row in range(col_matrix)] for col in range(row_self)])
+		for i in range(row_self):
+			for j in range(col_matrix):
+				for k in range(col_self):
+					self.sum.m[i][j] += self.m[i][k] * matrix.m[k][j]
+		return self.sum

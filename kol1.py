@@ -3,12 +3,12 @@
 
 from my_matrix import Matrix
 
-m1 = Matrix([1,2],[3,4])
-print m1
+m1 = Matrix([[1,2],[3,4]])
+print m1.m
 #| 1  2 |
 #| 3  4 |
 
-m2 = Matrix([4,3],[2,1])
+m2 = Matrix([[4,3],[2,1]])
 print m2
 #| 4  3 |
 #| 2  1 |
@@ -43,3 +43,7 @@ print m8
 #| 3  2 |
 #| 1  0 |
 
+m9 = m1.prod(m2)
+print m9
+#| 8  5 |
+#| 20  13 |
