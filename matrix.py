@@ -115,7 +115,7 @@ class Matrix:
 		row_matrix = len(matrix.m)
 		col_matrix = len(matrix.m[0])
 		if col_self != row_matrix:
-			print "Error"
+			print ("Error")
 			return
 		self.sum = Matrix([[0 for row in range(col_matrix)] for col in range(row_self)])
 		for i in range(row_self):
@@ -127,7 +127,7 @@ class Matrix:
 	def __iter__(self):
 		return self
 
-	def next(self):
+	def __next__(self):
 		if self.index >= len(self.m):
 			raise StopIteration
 		else:
