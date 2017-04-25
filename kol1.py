@@ -9,6 +9,7 @@ print (m1)
 #| 3  4 |
 
 m2 = Matrix([[4,3],[2,1]])
+m3 = Matrix([[4,3]])
 print (m2)
 #| 4  3 |
 #| 2  1 |
@@ -47,7 +48,7 @@ m9 = m1.prod(m2)
 print (m9)
 #| 8  5 |
 #| 20  13 |
-
+print (m3+m2)
 for i in m9:
 	print (i)
 #[8, 5]
