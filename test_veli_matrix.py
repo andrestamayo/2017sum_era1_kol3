@@ -61,7 +61,7 @@ class MyTest5(unittest.TestCase):
 
         self.m1+self.m4
     def test_init(self): #When making an erroneous addition we should give propper information to user
-        self.assertRaises(IndexError, self.m1.__add__,self.m4)
+        self.assertRaises(ArithmeticError, self.m1.__add__,self.m4)
 
 class MyTest6(unittest.TestCase):
     """docstring for MyTest3."""
@@ -77,7 +77,7 @@ class MyTest6(unittest.TestCase):
     def test_init(self): #a matrix with the same components than other one should be the same
 
         self.assertEqual(self.m3.m,(self.m-self.m1).m)
-        
+
 class MyTest7(unittest.TestCase):
     """docstring for MyTest3."""
     def setUp(self):
